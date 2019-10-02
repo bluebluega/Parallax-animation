@@ -3,6 +3,7 @@ color grey = #D3D3D3;
 color brown = #663300;
 color Rgrey = #696969;
 color red = #CC0000;
+color yellow = #fad201;
 
 int x1 = -400; //mountains
 int x2 = 0; //tree tops
@@ -17,10 +18,14 @@ void draw() {
   background(blue);
   fill(#D3D3D3);
   //mountains
-  triangle(x1, 600, -200, 100, 0, 600);
-  triangle(x1 + 400, 600, 200, 100, 400, 600);
-  triangle(x1 + 800, 600, 600, 100, 800, 600);
-  triangle(x1 + 1200, 600, 1000, 100, 1200, 600);
+  triangle(x1, 550, -200, 100, 0, 550);
+  triangle(x1 + 400, 550, 200, 100, 400, 550);
+  triangle(x1 + 800, 550, 600, 100, 800, 550);
+  triangle(x1 + 1200, 550, 1000, 100, 1200, 550);
+  triangle(200, 600, 400, 200, 600, 600);
+  triangle(600, 600, 800, 200, 1000, 600);
+  //snow
+  
 
   //trees
   fill(brown);
@@ -49,12 +54,22 @@ void draw() {
   //road
   fill(Rgrey);
   rect(0, 550, 1200, 100);
+  
+   //headlights
+  //fill(yellow);
+  //quad(280, 520, 360, 500, 360, 550, 280, 540 );
 
   //car
   noStroke();
   fill(red);
-  rect(0, 450, 300, 150);
+  rect(0, 425, 300, 150, 25, 25, 25, 25);
   fill(000000);
-  circle(50, 600, 50);
-  circle(250, 600, 50);
+  circle(50, 575, 50);
+  circle(250, 575, 50);
+  fill(Rgrey);
+  circle(50, 575, 30);
+  circle(250, 575, 30);
+  fill(grey);
+  rect(15, 440, 225, 50, 15, 15, 15, 15);
+  rect(260, 440, 40, 50, 15, 10, 10, 15);
 }
