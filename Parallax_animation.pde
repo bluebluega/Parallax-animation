@@ -9,8 +9,13 @@ color green = #355829;
 
 
 int mountainX = 0;
-int treeX = 0;
+float treeX = 0;
 int carX = 0;
+boolean night = true;
+float x = 0;
+float b=0.5;
+//float Sx = 0;
+//float Sy = 10;
 void setup() {
   size(1200, 650);
   noStroke();
@@ -18,14 +23,20 @@ void setup() {
 
 
 void draw() {
-  background(blue);
   
+    background(blue);
+    
+    fill(0, 0, 0, x);
+    rect(0, 0, 1600, 650);
+    x = x + b;
+    
+
   pushMatrix();
   translate(mountainX, 0);
   moutains();
-  mountainX = mountainX + 2;
+  mountainX = mountainX + 1;
   popMatrix();
-  
+
   pushMatrix();
   translate(treeX, 0);
   tree();
@@ -35,35 +46,47 @@ void draw() {
   //road
   fill(Rgrey);
   rect(0, 550, 1200, 100);
-  
+
   pushMatrix();
   translate(carX, 0);
   car();
-  carX = carX + 4;
+  carX = carX + 6;
   popMatrix();
-   //headlights
-   
-  //fill(yellow);
-  //quad(280, 520, 360, 500, 360, 550, 280, 540 );
+ 
 
-  
-  if (mountainX >= 400){
-  
+
+  if (mountainX >= 400) {
+
     mountainX = 0;
   }
-  
-  if (treeX >= 120){
+
+  if (treeX >= 120) {
     treeX = 0;
   }
-  
-  if (carX >= 1200){
+
+  if (carX >= 1200) {
     carX = -300;
+    night = !night;
   }
+  
+      
+    if (x > 255) {
+       b=-0.5;
+    }
+    
+   if (x < 0) {
+     b=0.5;
+ 
+    }
+    
+     
+
+
 }
 
 
 // ---------------------------------------------------------------------
-void moutains(){
+void moutains() {
   fill(#D3D3D3);
   //mountains
   triangle(-600, 600, -400, 200, -200, 550);
@@ -74,8 +97,8 @@ void moutains(){
   triangle(400, 550, 600, 100, 800, 550);
   triangle(600, 600, 800, 200, 1000, 600);
   triangle(800, 550, 1000, 100, 1200, 550);
-  
- 
+
+
   //snow
   fill(white);
   arc(-400, 200, 200, 300, radians(50), radians(127) );
@@ -89,8 +112,8 @@ void moutains(){
 }
 
 //---------------------------------------------------------------
-void tree(){
-//trees
+void tree() {
+  //trees
   fill(brown);
   rect(-70, 300, 20, 300);
   rect(50, 300, 20, 300);
@@ -119,9 +142,11 @@ void tree(){
 
 //-------------------------------------------------------
 
-void car(){
-//car
+void car() {
+  //car
   noStroke();
+    fill(250, 210, 1, x);
+  quad(280, 520, 360, 500, 360, 550, 280, 540 );
   fill(red);
   rect(0, 425, 300, 150, 25, 25, 25, 25);
   fill(000000);
@@ -133,4 +158,5 @@ void car(){
   fill(grey);
   rect(15, 440, 225, 50, 15, 15, 15, 15);
   rect(260, 440, 40, 50, 15, 10, 10, 15);
+  
 }
